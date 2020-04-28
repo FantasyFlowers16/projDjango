@@ -17,11 +17,11 @@
                 <tr>
                   <th>#</th>
                   <th>ФИО</th>
-                  <th>ТиМП</th>
-                  <th>ЭиС</th>
-                  <th>Философия</th>
-                  <th>Иностранный язык</th>
-                  <th>Физическая культура</th>
+                  <th>Python</th>
+                  <th>Java</th>
+                  <th>JavaScript</th>
+                  <th>Php</th>
+                  <th>SQL</th>
                   <th>Средний балл</th>
                 </tr>
                 </thead>
@@ -30,16 +30,17 @@
                         <tr>
                             <th scope="row">{{student.id}}</th>
                             <td>{{student.fio}}</td>
-                            <td>{{student.timp}}</td>
-                            <td>{{student.eis}}</td>
-                            <td>{{student.philosophy}}</td>
-                            <td>{{student.english}}</td>
-                            <td>{{student.sport}}</td>
+                            <td>{{student.python}}</td>
+                            <td>{{student.java}}</td>
+                            <td>{{student.javaScript}}</td>
+                            <td>{{student.php}}</td>
+                            <td>{{student.sql}}</td>
                             <td>{{student.average}}</td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
+            <button>Добавить студента</button>
             <h4>Отличники:{{excellent_students}}</h4>
             <h4>Отчислить:{{bad_students}}</h4>
         </div>
