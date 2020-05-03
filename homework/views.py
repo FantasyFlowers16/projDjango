@@ -10,13 +10,11 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        student = Student('Petr', 123)
         context.update(
             {
                 'students_statistics': all_data_student,
-
-                'excellent_students': 'Student A, Student B',
-                'bad_students': 'Student C, Student D'
+                'excellent_students': exellent_student,
+                'bad_students': bad_student
             }
         )
         return context
@@ -37,8 +35,22 @@ class Student:
 
 
 class Statistics:
-    pass
 
+    def bad_student(self):
+        a = [student['average'] for student in all_data_student]
+        a=sorted(a)
+        bad_student_1=[student['fio'] for student in all_data_student if student['average'] is a[0]]
+        bad_student_2 =[student['fio'] for student in all_data_student if student['average'] is a[1]]
+
+        return bad_student_1, bad_student_2
+
+    def exellent_student(self):
+        a = [student['average'] for student in all_data_student]
+        a = sorted(a)
+        exellent_student_1 = [student['fio'] for student in all_data_student if student['average'] is a[-1]]
+        exellent_student_2 = [student['fio'] for student in all_data_student if student['average'] is a[-2]]
+
+        return exellent_student_1, exellent_student_2
 
 class Subject:
     def __init__(self, python=5, java=5, java_script=5, php=5, sql=5):
@@ -61,7 +73,7 @@ class Subject:
 
     def union_data(self, data_st,data_student):
         data_st.update(data_student)
-        print(data_st)
+
 
 
 class Score:
@@ -88,6 +100,10 @@ stud1 = Student("Ильин Иван Гамзатович", 2212)
 sub1 = Subject(4, 5, 5, 4, 5)
 sub1.union_data(stud1.add_student(),sub1.add_subject())
 
-stud1 = Student("Кариманов Ашот ОТолбекович", 6812)
+stud1 = Student("Кариманов Ашот Отолбекович", 6812)
 sub1 = Subject(2, 2, 2, 3, 2)
 sub1.union_data(stud1.add_student(),sub1.add_subject())
+
+st=Statistics()
+bad_student=st.bad_student()
+exellent_student=st.exellent_student()
